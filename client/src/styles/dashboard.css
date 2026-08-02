@@ -1,0 +1,578 @@
+/* ==========================
+   DASHBOARD
+========================== */
+
+.dashboard-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    background:#050816;
+
+    color:white;
+
+}
+
+/* ================= Sidebar ================= */
+
+.sidebar{
+
+    width:270px;
+
+    background:rgba(16,22,38,.95);
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+    padding:35px 25px;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    backdrop-filter:blur(20px);
+
+}
+
+.logo{
+
+    color:#00E5FF;
+
+    font-size:32px;
+
+    font-family:"Orbitron",sans-serif;
+
+    margin-bottom:50px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar ul li{
+
+    padding:16px 18px;
+
+    margin-bottom:15px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    color:#b7c5d8;
+
+    font-size:17px;
+
+}
+
+.sidebar ul li:hover{
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    color:white;
+
+    transform:translateX(8px);
+
+}
+
+.sidebar ul .active{
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    color:white;
+
+    box-shadow:0 0 25px rgba(0,229,255,.25);
+
+}
+
+/* ================= Main ================= */
+
+.dashboard-main{
+
+    flex:1;
+
+    margin-left:270px;
+
+    padding:40px;
+
+}
+
+/* ================= Header ================= */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.dashboard-header h1{
+
+    font-size:42px;
+
+    margin-bottom:8px;
+
+    font-family:"Orbitron",sans-serif;
+
+}
+
+.dashboard-header p{
+
+    color:#94a3b8;
+
+}
+
+.profile{
+
+    padding:15px 28px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-weight:600;
+
+}
+/* ================= Stats ================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+.stat-box{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    transition:.35s;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.stat-box:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#00E5FF;
+
+    box-shadow:
+    0 0 30px rgba(0,229,255,.22);
+
+}
+
+.stat-box h2{
+
+    font-size:34px;
+
+    color:#00E5FF;
+
+    margin-bottom:8px;
+
+    font-family:"Orbitron",sans-serif;
+
+}
+
+.stat-box span{
+
+    color:#b6c4d8;
+
+}
+
+/* ================= Dashboard Grid ================= */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:1.4fr 1fr;
+
+    gap:30px;
+
+}
+
+/* ================= Activity Card ================= */
+
+.activity-card{
+
+    background:rgba(255,255,255,.06);
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:30px;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.activity-card h2{
+
+    margin-bottom:28px;
+
+    font-size:28px;
+
+    font-family:"Orbitron",sans-serif;
+
+}
+
+.activity-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:22px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.03);
+
+    transition:.3s;
+
+}
+
+.activity-item:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.activity-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+}
+
+.activity-item h4{
+
+    color:white;
+
+    margin-bottom:5px;
+
+}
+
+.activity-item p{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+/* ================= Tournament ================= */
+
+.tournament-card{
+
+    position:relative;
+
+    background:linear-gradient(135deg,#111827,#1E293B);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+}
+
+.live-tag{
+
+    display:inline-block;
+
+    padding:7px 16px;
+
+    border-radius:30px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.tournament-card h2{
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+    font-family:"Orbitron",sans-serif;
+
+}
+
+.tournament-card p{
+
+    color:#b6c4d8;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
+
+}
+
+.tournament-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:35px;
+
+}
+
+.tournament-info h3{
+
+    color:#00E5FF;
+
+    font-size:30px;
+
+    margin-bottom:6px;
+
+}
+
+.tournament-info span{
+
+    color:#9fb3cf;
+
+}
+
+.join-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    transition:.35s;
+
+}
+
+.join-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 35px rgba(0,229,255,.35);
+
+}
+/* ================= Scrollbar ================= */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00E5FF;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#08101d;
+
+}
+
+/* ================= Animation ================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dashboard-header,
+.stats,
+.dashboard-grid{
+
+    animation:fadeUp .7s ease;
+
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:1200px){
+
+    .stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+
+        width:90px;
+
+        padding:30px 10px;
+
+    }
+
+    .logo{
+
+        font-size:18px;
+
+        text-align:center;
+
+        margin-bottom:40px;
+
+    }
+
+    .sidebar ul li{
+
+        font-size:0;
+
+        text-align:center;
+
+        padding:18px 10px;
+
+    }
+
+    .dashboard-main{
+
+        margin-left:90px;
+
+        padding:25px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .dashboard-main{
+
+        padding:18px;
+
+    }
+
+    .dashboard-header h1{
+
+        font-size:30px;
+
+    }
+
+    .activity-card,
+    .tournament-card{
+
+        padding:22px;
+
+    }
+
+}

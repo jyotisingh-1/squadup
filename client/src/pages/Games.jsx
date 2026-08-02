@@ -1,4 +1,4 @@
-function Profile() {
+function Games() {
   return (
     <div
       style={{
@@ -12,9 +12,9 @@ function Profile() {
         fontWeight: "bold",
       }}
     >
-      👤 Profile Page
+      🎮 Games Page
     </div>
   );
 }
 
-export default Profile;
+export default Games;

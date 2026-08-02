@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.hero{
+    min-height:100vh;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#060816,#0b1328,#121d3b);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 8%;
+    font-family:"Poppins",sans-serif;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#00d9ff25 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#7b2cff25 0%,transparent 40%);
+    z-index:0;
+}
+
+.hero-container{
+    width:100%;
+    max-width:1400px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.hero-left{
+    animation:fadeLeft .8s ease;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:50px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(0,229,255,.25);
+    margin-bottom:28px;
+    font-size:14px;
+    backdrop-filter:blur(10px);
+}
+
+.hero-left h1{
+    font-size:72px;
+    line-height:1.1;
+    font-family:"Orbitron",sans-serif;
+    margin-bottom:25px;
+}
+
+.hero-left h1 span{
+    color:#00e5ff;
+}
+
+.hero-left p{
+    color:#b8c6dc;
+    font-size:18px;
+    line-height:1.8;
+    max-width:620px;
+    margin-bottom:45px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    margin-bottom:50px;
+}
+
+.primary-btn{
+    padding:16px 36px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#00e5ff,#7b2cff);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-4px);
+}
+
+.secondary-btn{
+    padding:16px 36px;
+    border-radius:50px;
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.18);
+    cursor:pointer;
+    transition:.35s;
+}
+
+.secondary-btn:hover{
+    border-color:#00e5ff;
+}
+
+.hero-stats{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.stat-card{
+    width:160px;
+    padding:24px;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    transition:.35s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+}
+
+.stat-card h2{
+    font-size:32px;
+    color:#00e5ff;
+    margin-bottom:8px;
+    font-family:"Orbitron",sans-serif;
+}
+
+.stat-card span{
+    color:#b8c6dc;
+    font-size:14px;
+}
+/* ==========================
+   RIGHT SIDE
+========================== */
+
+.hero-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation:fadeRight .8s ease;
+}
+
+.hero-card{
+    width:420px;
+    padding:35px;
+    border-radius:28px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-card:hover{
+    transform:translateY(-10px);
+    box-shadow:
+        0 0 45px rgba(0,229,255,.20),
+        0 20px 70px rgba(0,0,0,.45);
+}
+
+.hero-card::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(0,229,255,.08);
+    top:-120px;
+    right:-120px;
+    filter:blur(20px);
+}
+
+.card-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.live-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#00ff84;
+    box-shadow:0 0 12px #00ff84;
+    animation:pulse 1.5s infinite;
+}
+
+.card-header p{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:1px;
+    color:#d7e6ff;
+}
+
+.game-icon{
+    width:120px;
+    height:120px;
+    margin:auto;
+    border-radius:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    background:linear-gradient(135deg,#00e5ff,#7b2cff);
+    box-shadow:0 0 35px rgba(0,229,255,.30);
+    margin-bottom:30px;
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero-card h3{
+    text-align:center;
+    font-size:28px;
+    font-family:"Orbitron",sans-serif;
+    margin-bottom:12px;
+}
+
+.hero-card p{
+    text-align:center;
+    color:#c5d2e8;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.join-btn{
+    width:100%;
+    height:56px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#00e5ff,#7b2cff);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.join-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 35px rgba(0,229,255,.30);
+}
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes float {
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0%{
+        transform:scale(.9);
+        opacity:.6;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity:1;
+    }
+    100%{
+        transform:scale(.9);
+        opacity:.6;
+    }
+}
+
+@keyframes fadeLeft{
+    from{
+        opacity:0;
+        transform:translateX(-60px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeRight{
+    from{
+        opacity:0;
+        transform:translateX(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1100px){
+
+.hero-container{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:60px;
+}
+
+.hero-left p{
+    margin:auto auto 40px;
+}
+
+.hero-buttons{
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.hero-stats{
+    justify-content:center;
+}
+
+.hero-right{
+    margin-top:20px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:120px 25px 70px;
+}
+
+.hero-left h1{
+    font-size:46px;
+    line-height:1.2;
+}
+
+.hero-left p{
+    font-size:16px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+}
+
+.hero-card{
+    width:100%;
+    padding:28px;
+}
+
+.game-icon{
+    width:90px;
+    height:90px;
+    font-size:42px;
+}
+
+.hero-stats{
+    flex-direction:column;
+    align-items:center;
+}
+
+.stat-card{
+    width:100%;
+    max-width:300px;
+}
+
+}
+/* ==========================
+POPULAR GAMES
+========================== */
+
+.games-section{
+   .games-section{
+    position: relative;
+    padding:120px 8%;
+    background: linear-gradient(
+        180deg,
+        #101a36 0%,
+        #0b1022 25%,
+        #070b17 60%,
+        #050816 100%
+    );
+}
+}
+.games-section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:700px;
+    height:400px;
+    background:#6c4dff;
+    opacity:.12;
+    filter:blur(180px);
+    pointer-events:none;
+}
+
+.games-title{
+    color:white;
+    text-align:center;
+    font-size:56px;
+    margin-bottom:70px;
+    font-family:"Orbitron",sans-serif;
+    text-shadow:
+        0 0 20px rgba(0,229,255,.25),
+        0 0 50px rgba(124,58,237,.25);
+}
+
+.games-grid{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:40px;
+    justify-items:center;
+    align-items:start;
+}
+
+@media(max-width:768px){
+
+.games-title{
+    font-size:32px;
+}
+
+.games-section{
+    padding:70px 25px;
+}
+
+}
+.features-section{
+    padding:100px 8%;
+    background:#050816;
+}
+
+.features-title{
+    text-align:center;
+    color:white;
+    font-size:48px;
+    margin-bottom:60px;
+    font-family:"Orbitron",sans-serif;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:35px;
+    transition:.35s;
+    backdrop-filter:blur(15px);
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+    border-color:#00E5FF;
+    box-shadow:0 0 35px rgba(0,229,255,.2);
+}
+
+.feature-box h3{
+    color:white;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.feature-box p{
+    color:#b8c6dc;
+    line-height:1.7;
+}

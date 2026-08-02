@@ -1,4 +1,4 @@
-function Profile() {
+function Settings() {
   return (
     <div
       style={{
@@ -12,9 +12,9 @@ function Profile() {
         fontWeight: "bold",
       }}
     >
-      👤 Profile Page
+      ⚙️ Settings Page
     </div>
   );
 }
 
-export default Profile;
+export default Settings;

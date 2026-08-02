@@ -1,4 +1,4 @@
-function Profile() {
+function Tournament() {
   return (
     <div
       style={{
@@ -12,9 +12,9 @@ function Profile() {
         fontWeight: "bold",
       }}
     >
-      👤 Profile Page
+      🏆 Tournament Page
     </div>
   );
 }
 
-export default Profile;
+export default Tournament;

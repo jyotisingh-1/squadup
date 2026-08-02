@@ -1,0 +1,65 @@
+/* ===========================
+   HOME PAGE
+=========================== */
+
+.games-section{
+    position:relative;
+    padding:120px 8%;
+    background:linear-gradient(
+        180deg,
+        #101a36 0%,
+        #0b1022 25%,
+        #070b17 60%,
+        #050816 100%
+    );
+    overflow:hidden;
+}
+
+.games-section::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:400px;
+    background:#7C3AED;
+    opacity:.12;
+    filter:blur(180px);
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+}
+
+.games-title{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+    font-size:56px;
+    font-family:"Orbitron",sans-serif;
+    margin-bottom:70px;
+}
+
+.games-grid{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:40px;
+    justify-items:center;
+
+    max-width:1400px;
+    margin:auto;
+}
+
+@media(max-width:768px){
+
+.games-title{
+    font-size:38px;
+}
+
+.games-section{
+    padding:80px 20px;
+}
+
+}
