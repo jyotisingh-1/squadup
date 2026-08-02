@@ -1,0 +1,127 @@
+.sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+
+    background:#0b1220;
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:30px 20px;
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.sidebar-logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:50px;
+}
+
+.logo-circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    color:white;
+    font-weight:700;
+    font-size:22px;
+
+    box-shadow:0 0 25px rgba(0,229,255,.35);
+}
+
+.sidebar-logo h2{
+    color:white;
+    font-family:"Orbitron",sans-serif;
+    font-size:28px;
+}
+
+.sidebar-logo span{
+    color:#00E5FF;
+}
+
+/* ==========================
+   MENU
+========================== */
+
+.sidebar-menu{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.sidebar-link{
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#c7d2e8;
+
+    transition:.3s;
+}
+
+.sidebar-link:hover{
+    background:rgba(0,229,255,.12);
+    color:white;
+}
+
+.sidebar-link.active{
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+    color:white;
+
+    box-shadow:0 0 25px rgba(0,229,255,.25);
+}
+
+.icon{
+    font-size:20px;
+}
+
+/* ==========================
+   LOGOUT
+========================== */
+
+.logout-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:50px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    background:#ff3b5c;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#ff2148;
+}
