@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 import "../styles/login.css";
-
+import toast from "react-hot-toast";
 function Login() {
   const navigate = useNavigate();
 
@@ -12,11 +14,12 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (email.trim() === "" || password.trim() === "") {
+    if (!email || !password) {
       setError("Please fill all fields");
       return;
     }
@@ -26,14 +29,47 @@ function Login() {
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
+    try {
+      setLoading(true);
+      setError("");
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      toast.success("Welcome Back Gamer 🎮");
+
+      navigate("/dashboard");
+
+    } catch (error) {
+
+      switch (error.code) {
+
+        case "auth/invalid-credential":
+          setError("Invalid email or password");
+          break;
+
+        case "auth/user-not-found":
+          setError("User not found");
+          break;
+
+        case "auth/wrong-password":
+          toast.error("Wrong Password");
+          break;
+
+        case "auth/too-many-requests":
+          setError("Too many attempts. Try again later.");
+          break;
+
+        default:
+          toast.error(error.message);
+      }
+
+    } finally {
+      setLoading(false);
     }
-
-    setError("");
-
-    navigate("/dashboard");
   };
 
   return (
@@ -58,6 +94,7 @@ function Login() {
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
 
           </div>
@@ -69,30 +106,48 @@ function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <span
               className="eye-icon"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              {showPassword ? (
+                <EyeOff size={20} />
+              ) : (
+                <Eye size={20} />
+              )}
             </span>
 
           </div>
 
-          {error && <p className="error-msg">{error}</p>}
+          {error && (
+            <p
+              className="error-msg"
+              style={{
+                color: "#ff4d4f",
+                marginBottom: "15px",
+                textAlign: "center",
+              }}
+            >
+              {error}
+            </p>
+          )}
 
-          <button type="submit" className="auth-btn">
-            Login
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
 
         </form>
 
         <div className="auth-bottom">
-          Don't have an account?{" "}
-          <Link to="/signup">
-            Create Account
-          </Link>
+          Don't have an account?
+          <Link to="/signup"> Create Account</Link>
         </div>
 
       </div>

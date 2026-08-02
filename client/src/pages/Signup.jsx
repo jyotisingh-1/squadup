@@ -1,23 +1,25 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 import "../styles/signup.css";
 
 function Signup() {
-
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [error, setError] = useState("");
-
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     if (!fullName || !email || !password || !confirmPassword) {
@@ -40,16 +42,28 @@ function Signup() {
       return;
     }
 
-    setError("");
+    try {
+      setLoading(true);
+      setError("");
 
-    alert("Account Created Successfully!");
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    navigate("/login");
+      alert("🎉 Account Created Successfully!");
+
+      navigate("/dashboard");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="auth-page">
-
       <div className="auth-card">
 
         <div className="auth-logo">
@@ -67,7 +81,8 @@ function Signup() {
               type="text"
               placeholder="Full Name"
               value={fullName}
-              onChange={(e)=>setFullName(e.target.value)}
+              onChange={(e) => setFullName(e.target.value)}
+              required
             />
           </div>
 
@@ -76,24 +91,26 @@ function Signup() {
               type="email"
               placeholder="Email Address"
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
           <div className="input-box password-box">
 
             <input
-              type={showPassword ? "text":"password"}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <span
               className="eye-icon"
-              onClick={()=>setShowPassword(!showPassword)}
+              onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </span>
 
           </div>
@@ -101,25 +118,47 @@ function Signup() {
           <div className="input-box password-box">
 
             <input
-              type={showConfirmPassword ? "text":"password"}
+              type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm Password"
               value={confirmPassword}
-              onChange={(e)=>setConfirmPassword(e.target.value)}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
             />
 
             <span
               className="eye-icon"
-              onClick={()=>setShowConfirmPassword(!showConfirmPassword)}
+              onClick={() =>
+                setShowConfirmPassword(!showConfirmPassword)
+              }
             >
-              {showConfirmPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
+              {showConfirmPassword ? (
+                <EyeOff size={20} />
+              ) : (
+                <Eye size={20} />
+              )}
             </span>
 
           </div>
 
-          {error && <p className="error-msg">{error}</p>}
+          {error && (
+            <p
+              className="error-msg"
+              style={{
+                color: "#ff4d4f",
+                marginBottom: "15px",
+                textAlign: "center",
+              }}
+            >
+              {error}
+            </p>
+          )}
 
-          <button type="submit" className="auth-btn">
-            Create Account
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading}
+          >
+            {loading ? "Creating..." : "Create Account"}
           </button>
 
         </form>
@@ -130,7 +169,6 @@ function Signup() {
         </div>
 
       </div>
-
     </div>
   );
 }
