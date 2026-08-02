@@ -1,0 +1,90 @@
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+    gap:30px;
+}
+
+.topbar-left h1{
+    color:white;
+    font-size:38px;
+    font-family:"Orbitron",sans-serif;
+    margin-bottom:8px;
+}
+
+.topbar-left p{
+    color:#9fb3cf;
+    font-size:16px;
+}
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.search-box input{
+    width:260px;
+    height:48px;
+    border:none;
+    outline:none;
+    border-radius:50px;
+    padding:0 20px;
+    background:#111827;
+    color:white;
+    font-size:15px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.search-box input:focus{
+    border-color:#00E5FF;
+    box-shadow:0 0 20px rgba(0,229,255,.25);
+}
+
+.notification-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    background:#111827;
+    color:white;
+    transition:.3s;
+}
+
+.notification-btn:hover{
+    background:#00E5FF;
+    color:#050816;
+}
+
+.profile-box img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #00E5FF;
+}
+
+@media(max-width:900px){
+
+.topbar{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.topbar-right{
+    width:100%;
+}
+
+.search-box{
+    flex:1;
+}
+
+.search-box input{
+    width:100%;
+}
+
+}

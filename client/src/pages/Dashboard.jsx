@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-
+import Topbar from "../components/Topbar";
+import StatsCard from "../components/StatsCard";
+import "../styles/statscard.css";
 function Dashboard() {
   return (
     <div style={{ display: "flex" }}>
@@ -13,26 +15,41 @@ function Dashboard() {
           minHeight: "100vh",
           background: "#050816",
           color: "white",
-          padding: "40px",
+          padding: "35px 40px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "42px",
-            marginBottom: "10px",
-          }}
-        >
-          Welcome Back, Jyoti 👋
-        </h1>
+        <Topbar />
+        <div className="stats-grid">
 
-        <p
-          style={{
-            color: "#9fb3cf",
-            fontSize: "18px",
-          }}
-        >
-          Your gaming dashboard is ready.
-        </p>
+  <StatsCard
+    title="Games Played"
+    value="284"
+    icon="🎮"
+    color="linear-gradient(135deg,#00E5FF,#2563EB)"
+  />
+
+  <StatsCard
+    title="Wins"
+    value="167"
+    icon="🏆"
+    color="linear-gradient(135deg,#FFD700,#FF8C00)"
+  />
+
+  <StatsCard
+    title="Current Rank"
+    value="#24"
+    icon="⭐"
+    color="linear-gradient(135deg,#8B5CF6,#EC4899)"
+  />
+
+  <StatsCard
+    title="Squad Coins"
+    value="9250"
+    icon="💰"
+    color="linear-gradient(135deg,#22C55E,#16A34A)"
+  />
+
+</div>
       </main>
     </div>
   );
