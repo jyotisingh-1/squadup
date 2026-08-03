@@ -4,7 +4,8 @@ import { auth } from "../firebase/firebase";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import "../styles/signup.css";
-
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 function Signup() {
   const navigate = useNavigate();
 
@@ -46,14 +47,26 @@ function Signup() {
       setLoading(true);
       setError("");
 
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await createUserWithEmailAndPassword(
+  auth,
+  email,
+  password
+);
+
+
+const user = userCredential.user;
+
+
+await setDoc(doc(db, "users", user.uid), {
+
+  fullName: fullName,
+  email: email,
+  createdAt: new Date()
+
+});
 
       alert("🎉 Account Created Successfully!");
-
+    
       navigate("/dashboard");
     } catch (error) {
       setError(error.message);

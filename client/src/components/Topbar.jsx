@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/topbar.css";
-
+import useUser from "../hooks/useUser";
 function Topbar() {
+  const userData = useUser();
   return (
     <div className="topbar">
 
       <div className="topbar-left">
-        <h1>Welcome Back, Jyoti 👋</h1>
+        Welcome Back {userData?.fullName || "Gamer"} 👋
         <p>Ready to dominate today's matches?</p>
       </div>
 

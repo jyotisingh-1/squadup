@@ -1,10 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/sidebar.css";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
   const location = useLocation();
-
+  
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: "🏠" },
     { name: "Profile", path: "/profile", icon: "👤" },
@@ -12,6 +15,15 @@ function Sidebar() {
     { name: "Friends", path: "/friends", icon: "👥" },
     { name: "Settings", path: "/settings", icon: "⚙️" },
   ];
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    navigate("/login");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <aside className="sidebar">
@@ -44,9 +56,12 @@ function Sidebar() {
       </ul>
 
       <div className="sidebar-bottom">
-        <Link to="/login" className="logout-btn">
+        <button 
+          className="logout-btn"
+          onClick={handleLogout}
+          >
           🚪 Logout
-        </Link>
+          </button>
       </div>
 
     </aside>

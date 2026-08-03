@@ -5,6 +5,9 @@ import StatsCard from "../components/StatsCard";
 import "../styles/statscard.css";
 import ContinuePlaying from "../components/ContinuePlaying";
 import TournamentCard from "../components/TournamentCard";
+import FriendsOnline from "../components/FriendsOnline";
+import RecentActivity from "../components/RecentActivity";
+import UpcomingMatch from "../components/UpcomingMatch";
 function Dashboard() {
   return (
     <div style={{ display: "flex" }}>
@@ -52,13 +55,38 @@ function Dashboard() {
   />
   
 </div>
-<div className="dashboard-bottom">
-    
+<div className="dashboard-layout">
+
+  <div className="left-dashboard">
 
     <ContinuePlaying />
-    <TournamentCard />
+
+    <RecentActivity />
 
   </div>
+
+
+  <div className="right-dashboard">
+
+    <TournamentCard />
+
+    <FriendsOnline />
+
+  </div>
+
+</div>
+  <div className="dashboard-lower">
+
+  <RecentActivity />
+
+  <div className="right-section">
+
+
+    <UpcomingMatch />
+
+  </div>
+
+</div>
       </main>
     </div>
   );

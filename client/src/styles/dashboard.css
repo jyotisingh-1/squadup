@@ -1,114 +1,292 @@
-/* ==========================
-   DASHBOARD
-========================== */
+/* ========================================
+   DASHBOARD LAYOUT
+======================================== */
 
 .dashboard-page{
-
-    min-height:100vh;
-
     display:flex;
-
+    min-height:100vh;
     background:#050816;
+    color:#fff;
+}
+
+/* ========================================
+   MAIN
+======================================== */
+
+.dashboard-main{
+    flex:1;
+    margin-left:260px;
+    padding:35px 40px;
+    background:#050816;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.dashboard-header h1{
+    font-size:34px;
+    font-weight:700;
+}
+
+.dashboard-header p{
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#131827;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* ========================================
+   STATS GRID
+======================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-top:25px;
+
+}
+
+/* ========================================
+   DASHBOARD BOTTOM
+======================================== */
+
+.dashboard-bottom{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:22px;
+
+    margin-top:30px;
+
+    align-items:start;
+
+}
+
+/* ========================================
+   COMMON CARD
+======================================== */
+
+.dashboard-card{
+
+    background:#131827;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:24px;
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#00E5FF;
+
+    box-shadow:0 0 25px rgba(0,229,255,.18);
+
+}
+
+.dashboard-card h2{
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+}
+/* ========================================
+   QUICK ACTIONS
+======================================== */
+
+.continue-card{
+    background:#131827;
+    border-radius:20px;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.continue-card h2{
+    font-size:22px;
+    margin-bottom:22px;
+}
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.action-btn{
+
+    background:#1b2235;
+
+    border:none;
+
+    border-radius:18px;
+
+    height:120px;
 
     color:white;
-
-}
-
-/* ================= Sidebar ================= */
-
-.sidebar{
-
-    width:270px;
-
-    background:rgba(16,22,38,.95);
-
-    border-right:1px solid rgba(255,255,255,.08);
-
-    padding:35px 25px;
-
-    position:fixed;
-
-    left:0;
-
-    top:0;
-
-    bottom:0;
-
-    backdrop-filter:blur(20px);
-
-}
-
-.logo{
-
-    color:#00E5FF;
-
-    font-size:32px;
-
-    font-family:"Orbitron",sans-serif;
-
-    margin-bottom:50px;
-
-}
-
-.sidebar ul{
-
-    list-style:none;
-
-}
-
-.sidebar ul li{
-
-    padding:16px 18px;
-
-    margin-bottom:15px;
-
-    border-radius:15px;
 
     cursor:pointer;
 
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.action-btn span{
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+}
+
+.action-btn p{
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.action-btn:hover{
+
+    transform:translateY(-6px);
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    box-shadow:0 0 25px rgba(0,229,255,.35);
+
+}
+
+/* ==========================
+   TOURNAMENT FINAL
+========================== */
+
+.tournament-card{
+
+    background:#131827;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
     transition:.35s;
 
-    color:#b7c5d8;
+}
 
-    font-size:17px;
+.tournament-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#00E5FF;
+
+    box-shadow:0 0 30px rgba(0,229,255,.20);
 
 }
 
-.sidebar ul li:hover{
+.live-badge{
 
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+    align-self:flex-start;
+
+    padding:6px 14px;
+
+    border-radius:50px;
+
+    background:#ef4444;
 
     color:white;
 
-    transform:translateX(8px);
+    font-size:12px;
+
+    font-weight:700;
+
+    animation:pulse 1.5s infinite;
 
 }
 
-.sidebar ul .active{
+@keyframes pulse{
 
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+    0%{opacity:1;}
 
-    color:white;
+    50%{opacity:.5;}
 
-    box-shadow:0 0 25px rgba(0,229,255,.25);
-
-}
-
-/* ================= Main ================= */
-
-.dashboard-main{
-
-    flex:1;
-
-    margin-left:270px;
-
-    padding:40px;
+    100%{opacity:1;}
 
 }
 
-/* ================= Header ================= */
+.tournament-card h2{
 
-.dashboard-header{
+    font-size:22px;
+
+    margin:0;
+
+}
+
+.game-tag{
+
+    width:max-content;
+
+    background:#1b2235;
+
+    color:#00E5FF;
+
+    padding:8px 14px;
+
+    border-radius:40px;
+
+    font-size:14px;
+
+}
+
+.tournament-row{
 
     display:flex;
 
@@ -116,133 +294,200 @@
 
     align-items:center;
 
-    margin-bottom:40px;
-
 }
 
-.dashboard-header h1{
-
-    font-size:42px;
-
-    margin-bottom:8px;
-
-    font-family:"Orbitron",sans-serif;
-
-}
-
-.dashboard-header p{
+.tournament-row span{
 
     color:#94a3b8;
 
+    font-size:14px;
+
 }
 
-.profile{
+.tournament-row strong{
 
-    padding:15px 28px;
+    color:white;
+
+    font-size:16px;
+
+}
+
+.progress{
+
+    height:8px;
+
+    background:#293247;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:63%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#00E5FF,#7C3AED);
+
+}
+
+.join-btn{
+
+    margin-top:auto;
+
+    height:50px;
+
+    border:none;
 
     border-radius:40px;
 
-    background:rgba(255,255,255,.06);
+    cursor:pointer;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    transition:.3s;
+
+}
+
+.join-btn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 30px rgba(0,229,255,.35);
+
+}
+/* ========================================
+   FRIENDS ONLINE
+======================================== */
+
+.friends-card{
+
+    background:#131827;
+
+    border-radius:20px;
+
+    padding:24px;
 
     border:1px solid rgba(255,255,255,.08);
-
-    font-weight:600;
-
-}
-/* ================= Stats ================= */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:25px;
-
-    margin-bottom:40px;
+    min-height: 380px;
 
 }
 
-.stat-box{
+.friends-card h2{
 
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:28px;
-
-    transition:.35s;
-
-    backdrop-filter:blur(18px);
+    margin-bottom:22px;
 
 }
 
-.stat-box:hover{
+.friend{
 
-    transform:translateY(-10px);
+    display:flex;
 
-    border-color:#00E5FF;
+    align-items:center;
 
-    box-shadow:
-    0 0 30px rgba(0,229,255,.22);
+    gap:14px;
 
-}
+    padding:14px;
 
-.stat-box h2{
+    border-radius:14px;
 
-    font-size:34px;
+    transition:.3s;
 
-    color:#00E5FF;
-
-    margin-bottom:8px;
-
-    font-family:"Orbitron",sans-serif;
+    cursor:pointer;
 
 }
 
-.stat-box span{
+.friend:hover{
 
-    color:#b6c4d8;
-
-}
-
-/* ================= Dashboard Grid ================= */
-
-.dashboard-grid{
-
-    display:grid;
-
-    grid-template-columns:1.4fr 1fr;
-
-    gap:30px;
+    background:#1b2235;
 
 }
 
-/* ================= Activity Card ================= */
+.avatar{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+.friend h4{
+
+    font-size:15px;
+
+}
+
+.friend p{
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+}
+
+.online-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22C55E;
+
+    margin-left:auto;
+
+}
+/* ========================================
+   RECENT ACTIVITY
+======================================== */
 
 .activity-card{
 
-    background:rgba(255,255,255,.06);
+    background:#131827;
 
-    border-radius:24px;
+    border-radius:20px;
 
     border:1px solid rgba(255,255,255,.08);
 
-    padding:30px;
+    padding:24px;
 
-    backdrop-filter:blur(18px);
+    margin-top:25px;
 
 }
 
 .activity-card h2{
 
-    margin-bottom:28px;
+    margin-bottom:22px;
 
-    font-size:28px;
+}
 
-    font-family:"Orbitron",sans-serif;
+.activity-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
 
 }
 
@@ -252,15 +497,13 @@
 
     align-items:center;
 
-    gap:18px;
+    gap:15px;
 
-    margin-bottom:22px;
+    padding:15px;
 
-    padding:18px;
+    border-radius:14px;
 
-    border-radius:16px;
-
-    background:rgba(255,255,255,.03);
+    background:#1b2235;
 
     transition:.3s;
 
@@ -268,17 +511,21 @@
 
 .activity-item:hover{
 
-    background:rgba(255,255,255,.08);
+    transform:translateX(6px);
+
+    background:#222b42;
 
 }
 
 .activity-icon{
 
-    width:60px;
+    width:42px;
 
-    height:60px;
+    height:42px;
 
-    border-radius:16px;
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
 
     display:flex;
 
@@ -286,17 +533,13 @@
 
     align-items:center;
 
-    font-size:28px;
-
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+    font-size:18px;
 
 }
 
 .activity-item h4{
 
-    color:white;
-
-    margin-bottom:5px;
+    font-size:15px;
 
 }
 
@@ -304,131 +547,23 @@
 
     color:#94a3b8;
 
-    font-size:14px;
-
-}
-
-/* ================= Tournament ================= */
-
-.tournament-card{
-
-    position:relative;
-
-    background:linear-gradient(135deg,#111827,#1E293B);
-
-    border-radius:24px;
-
-    padding:30px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    overflow:hidden;
-
-}
-
-.live-tag{
-
-    display:inline-block;
-
-    padding:7px 16px;
-
-    border-radius:30px;
-
-    background:#ef4444;
-
-    color:white;
-
     font-size:13px;
 
-    font-weight:700;
-
-    margin-bottom:20px;
-
 }
 
-.tournament-card h2{
-
-    font-size:30px;
-
-    margin-bottom:18px;
-
-    font-family:"Orbitron",sans-serif;
-
-}
-
-.tournament-card p{
-
-    color:#b6c4d8;
-
-    line-height:1.7;
-
-    margin-bottom:30px;
-
-}
-
-.tournament-info{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-bottom:35px;
-
-}
-
-.tournament-info h3{
-
-    color:#00E5FF;
-
-    font-size:30px;
-
-    margin-bottom:6px;
-
-}
-
-.tournament-info span{
-
-    color:#9fb3cf;
-
-}
-
-.join-btn{
-
-    width:100%;
-
-    height:58px;
-
-    border:none;
-
-    border-radius:40px;
-
-    cursor:pointer;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    color:white;
-
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
-
-    transition:.35s;
-
-}
-
-.join-btn:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 0 35px rgba(0,229,255,.35);
-
-}
-/* ================= Scrollbar ================= */
+/* ========================================
+   SCROLLBAR
+======================================== */
 
 ::-webkit-scrollbar{
 
     width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#050816;
 
 }
 
@@ -440,13 +575,9 @@
 
 }
 
-::-webkit-scrollbar-track{
-
-    background:#08101d;
-
-}
-
-/* ================= Animation ================= */
+/* ========================================
+   ANIMATIONS
+======================================== */
 
 @keyframes fadeUp{
 
@@ -454,7 +585,7 @@
 
         opacity:0;
 
-        transform:translateY(35px);
+        transform:translateY(25px);
 
     }
 
@@ -468,67 +599,31 @@
 
 }
 
-.dashboard-header,
-.stats,
-.dashboard-grid{
+.stats-grid,
 
-    animation:fadeUp .7s ease;
+.dashboard-bottom,
+
+.activity-card{
+
+    animation:fadeUp .5s ease;
 
 }
 
-/* ================= Responsive ================= */
+/* ========================================
+   RESPONSIVE
+======================================== */
 
 @media(max-width:1200px){
 
-    .stats{
-
-        grid-template-columns:repeat(2,1fr);
-
-    }
-
-    .dashboard-grid{
+    .dashboard-bottom{
 
         grid-template-columns:1fr;
 
     }
 
-}
+    .stats-grid{
 
-@media(max-width:900px){
-
-    .sidebar{
-
-        width:90px;
-
-        padding:30px 10px;
-
-    }
-
-    .logo{
-
-        font-size:18px;
-
-        text-align:center;
-
-        margin-bottom:40px;
-
-    }
-
-    .sidebar ul li{
-
-        font-size:0;
-
-        text-align:center;
-
-        padding:18px 10px;
-
-    }
-
-    .dashboard-main{
-
-        margin-left:90px;
-
-        padding:25px;
+        grid-template-columns:repeat(2,1fr);
 
     }
 
@@ -536,211 +631,281 @@
 
 @media(max-width:768px){
 
-    .dashboard-header{
+    .dashboard-main{
 
-        flex-direction:column;
+        margin-left:0;
 
-        align-items:flex-start;
-
-        gap:20px;
+        padding:20px;
 
     }
 
-    .stats{
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .quick-actions{
 
         grid-template-columns:1fr;
 
     }
 
 }
+/* =========================
+   LOWER DASHBOARD
+========================= */
 
-@media(max-width:600px){
+.dashboard-lower{
 
-    .dashboard-main{
-
-        padding:18px;
-
-    }
-
-    .dashboard-header h1{
-
-        font-size:30px;
-
-    }
-
-    .activity-card,
-    .tournament-card{
-
-        padding:22px;
-
-    }
-
-}
-
-/* ===========================
-CONTINUE PLAYING
-=========================== */
-
-.dashboard-bottom{
     display:grid;
-    grid-template-columns:2fr 1fr 1fr;
+
+    grid-template-columns:2fr 1fr;
+
     gap:25px;
-    margin-top:30px;
-}
 
-.continue-card{
-    background:#131827;
-    border-radius:20px;
-    padding:25px;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.continue-card h2{
-    color:white;
-    margin-bottom:25px;
-}
-
-.continue-game{
-    padding:18px;
-    border-radius:16px;
-    background:#1b2235;
-    margin-bottom:18px;
-    transition:.3s;
-}
-
-.continue-game:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 25px rgba(0,229,255,.25);
-}
-
-.game-info h3{
-    color:white;
-    margin-bottom:6px;
-}
-
-.game-info p{
-    color:#9fb3cf;
-    font-size:14px;
-}
-
-.game-info span{
-    color:#00E5FF;
-    font-size:13px;
-}
-
-.progress-bar{
-    width:100%;
-    height:8px;
-    background:#2b3248;
-    border-radius:20px;
-    margin:18px 0;
-    overflow:hidden;
-}
-
-.progress-fill{
-    height:100%;
-    background:linear-gradient(90deg,#00E5FF,#7C3AED);
-    border-radius:20px;
-}
-
-.continue-btn{
-    border:none;
-    cursor:pointer;
-    padding:10px 20px;
-    border-radius:30px;
-    color:white;
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
-    transition:.3s;
-}
-
-.continue-btn:hover{
-    transform:scale(1.05);
-}
-
-/* ===========================
-TOURNAMENT
-=========================== */
-
-.tournament-card{
-
-    background:linear-gradient(135deg,#1a1b45,#32145d);
-
-    border-radius:20px;
-
-    padding:25px;
-
-    color:white;
-
-    border:1px solid rgba(255,255,255,.08);
+    margin-top:25px;
 
 }
 
-.tournament-card h2{
-
-    margin-bottom:18px;
-
-}
-
-.tournament-card h3{
-
-    margin-bottom:25px;
-
-}
-
-.tournament-info{
+.right-section{
 
     display:flex;
 
     flex-direction:column;
 
-    gap:20px;
+    gap:25px;
 
 }
 
-.tournament-info span{
+/* =========================
+   RECENT ACTIVITY
+========================= */
 
-    color:#b8c2d6;
+.recent-card{
 
-    font-size:13px;
+    background:#131827;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.08);
 
 }
 
-.tournament-info h4{
+.recent-card h2{
 
-    font-size:22px;
-
-    margin-top:5px;
+    margin-bottom:25px;
 
 }
 
-.join-btn{
+.activity-item{
 
-    width:100%;
+    display:flex;
 
-    margin-top:30px;
+    align-items:center;
 
-    height:50px;
+    gap:18px;
 
-    border:none;
+    padding:18px;
 
-    border-radius:40px;
+    margin-bottom:15px;
 
-    background:#00E5FF;
+    background:#1b2235;
 
-    color:#000;
-
-    font-weight:700;
-
-    cursor:pointer;
+    border-radius:16px;
 
     transition:.3s;
 
 }
 
-.join-btn:hover{
+.activity-item:hover{
 
-    transform:translateY(-3px);
+    transform:translateX(6px);
 
-    box-shadow:0 0 30px rgba(0,229,255,.5);
+    border:1px solid rgba(0,229,255,.35);
+
+}
+
+.activity-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    color:white;
+
+}
+
+.activity-content h4{
+
+    color:white;
+
+    margin-bottom:5px;
+
+}
+
+.activity-content span{
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+}
+
+/* =========================
+   UPCOMING MATCH
+========================= */
+
+.upcoming-card{
+
+    background:#131827;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.upcoming-card h2{
+
+    margin-bottom:22px;
+
+}
+
+.match-game{
+
+    padding:16px;
+
+    background:#1b2235;
+
+    border-radius:16px;
+
+    color:#00E5FF;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.match-details{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.match-details div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+.match-details span{
+
+    color:#94a3b8;
+
+}
+
+.match-details h4{
+
+    color:white;
+
+}
+/* FINAL DASHBOARD LAYOUT */
+
+.dashboard-layout{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+
+.left-dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+.right-dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+/* Tournament fix */
+
+.tournament-card{
+
+    min-height:420px;
+
+}
+
+
+/* Friends fix */
+
+.friends-card{
+
+    min-height:300px;
+
+}
+
+
+/* Recent activity */
+
+.recent-card{
+
+    min-height:350px;
+
+}
+
+
+
+@media(max-width:1100px){
+
+.dashboard-layout{
+
+grid-template-columns:1fr;
+
+}
 
 }

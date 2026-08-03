@@ -4,31 +4,49 @@ function TournamentCard() {
   return (
     <div className="tournament-card">
 
-      <h2>🏆 Tournament</h2>
+      <div className="live-badge">
+        🔴 LIVE
+      </div>
 
-      <h3>Weekend Championship</h3>
+      <h2>Weekend Championship</h2>
 
-      <div className="tournament-info">
+      <div className="game-tag">
+        🎮 BGMI
+      </div>
 
-        <div>
-          <span>Prize Pool</span>
-          <h4>₹25,000</h4>
-        </div>
+      <div className="tournament-row">
+        <span>🏆 Prize Pool</span>
+        <strong>₹25,000</strong>
+      </div>
 
-        <div>
-          <span>Players</span>
-          <h4>126 / 200</h4>
-        </div>
+      <div className="tournament-row">
+        <span>👥 Teams Joined</span>
+        <strong>126 / 200</strong>
+      </div>
 
-        <div>
-          <span>Starts In</span>
-          <h4>2 Days</h4>
-        </div>
+      <div className="progress">
+
+        <div className="progress-fill"></div>
 
       </div>
 
+      <div className="tournament-row">
+        <span>📍 Server</span>
+        <strong>Mumbai</strong>
+      </div>
+
+      <div className="tournament-row">
+        <span>👥 Team Size</span>
+        <strong>Squad (4)</strong>
+      </div>
+
+      <div className="tournament-row">
+        <span>⏰ Starts In</span>
+        <strong>2 Days</strong>
+      </div>
+
       <button className="join-btn">
-        Join Tournament
+        🚀 Join Tournament
       </button>
 
     </div>
