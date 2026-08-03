@@ -5,14 +5,19 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard"
+        element={
+        <ProtectedRoute>
+          <Dashboard />
+          </ProtectedRoute>
+           } />
 
         <Route path="/login" element={<Login />} />
 

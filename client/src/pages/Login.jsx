@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import "../styles/login.css";
-import toast from "react-hot-toast";
+
 function Login() {
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ function Login() {
         password
       );
 
-      toast.success("Welcome Back Gamer 🎮");
+      alert("🎉 Login Successful!");
 
       navigate("/dashboard");
 
@@ -56,7 +56,7 @@ function Login() {
           break;
 
         case "auth/wrong-password":
-          toast.error("Wrong Password");
+          setError("Wrong password");
           break;
 
         case "auth/too-many-requests":
@@ -64,7 +64,7 @@ function Login() {
           break;
 
         default:
-          toast.error(error.message);
+          setError(error.message);
       }
 
     } finally {

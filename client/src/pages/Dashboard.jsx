@@ -3,6 +3,8 @@ import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import StatsCard from "../components/StatsCard";
 import "../styles/statscard.css";
+import ContinuePlaying from "../components/ContinuePlaying";
+import TournamentCard from "../components/TournamentCard";
 function Dashboard() {
   return (
     <div style={{ display: "flex" }}>
@@ -48,8 +50,15 @@ function Dashboard() {
     icon="💰"
     color="linear-gradient(135deg,#22C55E,#16A34A)"
   />
-
+  
 </div>
+<div className="dashboard-bottom">
+    
+
+    <ContinuePlaying />
+    <TournamentCard />
+
+  </div>
       </main>
     </div>
   );
