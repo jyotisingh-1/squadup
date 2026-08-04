@@ -2,16 +2,16 @@ import "../styles/dashboard.css";
 
 const friends = [
   {
-    name: "Rohit",
+    name: "Shadow",
     game: "Playing BGMI",
   },
   {
-    name: "Ankit",
+    name: "Infinix",
     game: "Playing Valorant",
   },
   {
-    name: "Neha",
-    game: "In Lobby",
+    name: "Dark",
+    game: "In FFmax Lobby",
   },
 ];
 

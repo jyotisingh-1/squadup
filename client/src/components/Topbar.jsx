@@ -6,10 +6,22 @@ function Topbar() {
   return (
     <div className="topbar">
 
-      <div className="topbar-left">
-        Welcome Back {userData?.fullName || "Gamer"} 👋
-        <p>Ready to dominate today's matches?</p>
-      </div>
+      <div className="welcome-text">
+
+  <p className="welcome-small">
+    READY TO PLAY 🎮
+  </p>
+
+  <h1>
+    {userData?.fullName || "Gamer"}
+    <span> ⚡</span>
+  </h1>
+
+  <p className="welcome-desc">
+    Your squad is waiting. Let's dominate today's matches 🔥
+  </p>
+
+</div>
 
       <div className="topbar-right">
 

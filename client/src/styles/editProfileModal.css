@@ -1,0 +1,257 @@
+/* ==========================
+   MODAL OVERLAY
+========================== */
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+    animation:fadeIn .25s ease;
+
+}
+
+/* ==========================
+   MODAL
+========================== */
+
+.edit-modal{
+
+    width:500px;
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    color:white;
+
+    box-shadow:0 0 40px rgba(0,229,255,.18);
+
+    animation:popUp .25s ease;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.modal-header h2{
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:26px;
+
+}
+
+.close-btn{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.close-btn:hover{
+
+    color:#00E5FF;
+
+    transform:rotate(90deg);
+
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.edit-modal form{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.edit-modal label{
+
+    margin-bottom:8px;
+
+    margin-top:15px;
+
+    color:#cbd5e1;
+
+    font-weight:600;
+
+}
+
+.edit-modal input,
+.edit-modal textarea{
+
+    width:100%;
+
+    background:#1b2235;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    padding:14px 16px;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.edit-modal input:focus,
+.edit-modal textarea:focus{
+
+    border-color:#00E5FF;
+
+    box-shadow:0 0 18px rgba(0,229,255,.18);
+
+}
+
+.edit-modal textarea{
+
+    resize:none;
+
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.modal-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:28px;
+
+}
+
+.cancel-btn{
+
+    padding:12px 24px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.cancel-btn:hover{
+
+    background:#1f2937;
+
+}
+
+.save-btn{
+
+    padding:12px 26px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    transition:.3s;
+
+}
+
+.save-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 20px rgba(0,229,255,.3);
+
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes fadeIn{
+
+    from{opacity:0;}
+
+    to{opacity:1;}
+
+}
+
+@keyframes popUp{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}

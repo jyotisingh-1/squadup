@@ -363,26 +363,33 @@
     box-shadow:0 0 30px rgba(0,229,255,.35);
 
 }
-/* ========================================
+/* ==========================
    FRIENDS ONLINE
-======================================== */
+========================== */
 
 .friends-card{
 
-    background:#131827;
-
-    border-radius:20px;
-
-    padding:24px;
+    background:rgba(255,255,255,.06);
 
     border:1px solid rgba(255,255,255,.08);
-    min-height: 380px;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    backdrop-filter:blur(18px);
 
 }
 
 .friends-card h2{
 
     margin-bottom:22px;
+
+    font-size:24px;
+
+    font-family:"Orbitron",sans-serif;
+
+    color:white;
 
 }
 
@@ -392,11 +399,15 @@
 
     align-items:center;
 
-    gap:14px;
+    gap:15px;
 
-    padding:14px;
+    padding:15px;
 
-    border-radius:14px;
+    margin-bottom:15px;
+
+    border-radius:16px;
+
+    background:#131827;
 
     transition:.3s;
 
@@ -406,19 +417,21 @@
 
 .friend:hover{
 
+    transform:translateY(-4px);
+
     background:#1b2235;
+
+    box-shadow:0 0 20px rgba(0,229,255,.18);
 
 }
 
 .avatar{
 
-    width:46px;
+    width:48px;
 
-    height:46px;
+    height:48px;
 
     border-radius:50%;
-
-    background:linear-gradient(135deg,#00E5FF,#7C3AED);
 
     display:flex;
 
@@ -428,15 +441,29 @@
 
     font-weight:700;
 
+    font-size:18px;
+
+    color:white;
+
+    background:linear-gradient(135deg,#00E5FF,#7C3AED);
+
+    flex-shrink:0;
+
 }
 
 .friend h4{
 
-    font-size:15px;
+    margin:0;
+
+    color:white;
+
+    font-size:16px;
 
 }
 
 .friend p{
+
+    margin-top:4px;
 
     color:#94a3b8;
 
@@ -444,17 +471,23 @@
 
 }
 
+.friend > div:nth-child(2){
+
+    flex:1;
+
+}
+
 .online-dot{
 
-    width:10px;
+    width:12px;
 
-    height:10px;
+    height:12px;
 
     border-radius:50%;
 
     background:#22C55E;
 
-    margin-left:auto;
+    box-shadow:0 0 12px #22C55E;
 
 }
 /* ========================================
@@ -907,5 +940,59 @@
 grid-template-columns:1fr;
 
 }
+
+}
+/* ==========================
+   WELCOME SECTION
+========================== */
+
+.welcome-text h1{
+
+    font-size:42px;
+
+    margin:5px 0;
+
+    font-family:"Orbitron",sans-serif;
+
+    background:linear-gradient(
+        90deg,
+        #00E5FF,
+        #8B5CF6
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+.welcome-small{
+
+    color:#00E5FF;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+}
+
+
+.welcome-desc{
+
+    color:#94a3b8;
+
+    font-size:16px;
+
+    margin-top:8px;
+
+}
+
+
+.welcome-text{
+
+    animation:fadeUp .7s ease;
 
 }

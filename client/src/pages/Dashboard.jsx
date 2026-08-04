@@ -75,9 +75,7 @@ function Dashboard() {
   </div>
 
 </div>
-  <div className="dashboard-lower">
-
-  <RecentActivity />
+  
 
   <div className="right-section">
 
@@ -86,7 +84,7 @@ function Dashboard() {
 
   </div>
 
-</div>
+
       </main>
     </div>
   );

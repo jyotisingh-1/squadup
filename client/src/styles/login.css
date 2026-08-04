@@ -399,3 +399,38 @@
 .eye-icon:hover{
     transform:translateY(-50%) scale(1.15);
 }
+.forgot-password{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:-5px;
+
+    margin-bottom:20px;
+
+}
+
+.forgot-password button{
+
+    background:none;
+
+    border:none;
+
+    color:#00E5FF;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.forgot-password button:hover{
+
+    color:white;
+
+    text-decoration:underline;
+
+}

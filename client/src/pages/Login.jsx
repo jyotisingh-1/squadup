@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import "../styles/login.css";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -71,7 +72,41 @@ function Login() {
       setLoading(false);
     }
   };
+  const handleForgotPassword = async () => {
 
+  if (!email) {
+    toast.error("Please enter your email first.");
+    return;
+  }
+
+  try {
+
+    await sendPasswordResetEmail(auth, email);
+
+    toast.success(
+      "Password reset link sent to your email 📧"
+    );
+
+  } catch (error) {
+
+    switch (error.code) {
+
+      case "auth/user-not-found":
+        toast.error("No account found with this email.");
+        break;
+
+      case "auth/invalid-email":
+        toast.error("Enter a valid email.");
+        break;
+
+      default:
+        toast.error(error.message);
+
+    }
+
+  }
+
+};
   return (
     <div className="auth-page">
 
@@ -108,7 +143,17 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <div className="forgot-password">
 
+               <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                 >
+                  
+                Forgot Password?
+                </button>
+
+            </div>
             <span
               className="eye-icon"
               onClick={() => setShowPassword(!showPassword)}
