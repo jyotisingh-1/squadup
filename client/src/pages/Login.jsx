@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+
 import { auth } from "../firebase/firebase";
 import "../styles/login.css";
-import { sendPasswordResetEmail } from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,6 +19,8 @@ function Login() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  /* ================= LOGIN ================= */
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -72,41 +77,50 @@ function Login() {
       setLoading(false);
     }
   };
+
+  /* ================= FORGOT PASSWORD ================= */
+
   const handleForgotPassword = async () => {
 
-  if (!email) {
-    toast.error("Please enter your email first.");
-    return;
-  }
+    if (!email) {
+      alert("Please enter your registered email first.");
+      return;
+    }
 
-  try {
+    try {
 
-    await sendPasswordResetEmail(auth, email);
+      await sendPasswordResetEmail(auth, email);
 
-    toast.success(
-      "Password reset link sent to your email 📧"
-    );
+      alert(
+        "Password reset link sent! 📧\nPlease check your email inbox."
+      );
 
-  } catch (error) {
+    } catch (error) {
 
-    switch (error.code) {
+      console.error("Password reset error:", error);
 
-      case "auth/user-not-found":
-        toast.error("No account found with this email.");
-        break;
+      switch (error.code) {
 
-      case "auth/invalid-email":
-        toast.error("Enter a valid email.");
-        break;
+        case "auth/invalid-email":
+          alert("Please enter a valid email address.");
+          break;
 
-      default:
-        toast.error(error.message);
+        case "auth/user-not-found":
+          alert("No account found with this email.");
+          break;
+
+        case "auth/too-many-requests":
+          alert("Too many requests. Please try again later.");
+          break;
+
+        default:
+          alert("Failed to send reset email: " + error.message);
+      }
 
     }
 
-  }
+  };
 
-};
   return (
     <div className="auth-page">
 
@@ -122,6 +136,8 @@ function Login() {
 
         <form onSubmit={handleLogin}>
 
+          {/* EMAIL */}
+
           <div className="input-box">
 
             <input
@@ -134,6 +150,8 @@ function Login() {
 
           </div>
 
+          {/* PASSWORD */}
+
           <div className="input-box password-box">
 
             <input
@@ -143,17 +161,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <div className="forgot-password">
 
-               <button
-                  type="button"
-                  onClick={handleForgotPassword}
-                 >
-                  
-                Forgot Password?
-                </button>
-
-            </div>
             <span
               className="eye-icon"
               onClick={() => setShowPassword(!showPassword)}
@@ -167,6 +175,21 @@ function Login() {
 
           </div>
 
+          {/* FORGOT PASSWORD */}
+
+          <div className="forgot-password">
+
+            <button
+              type="button"
+              onClick={handleForgotPassword}
+            >
+              Forgot Password?
+            </button>
+
+          </div>
+
+          {/* ERROR */}
+
           {error && (
             <p
               className="error-msg"
@@ -179,6 +202,8 @@ function Login() {
               {error}
             </p>
           )}
+
+          {/* LOGIN BUTTON */}
 
           <button
             type="submit"
