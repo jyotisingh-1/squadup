@@ -1,6 +1,6 @@
 import "../styles/hero.css";
 import { Link } from "react-router-dom";
-
+import HolographicController from "./HolographicController";
 function Hero() {
   return (
     <section className="hero">
@@ -14,7 +14,7 @@ function Hero() {
         <div className="hero-left">
 
           <span className="hero-badge">
-            🔥 India's Ultimate Gaming Community
+            • NEXT-GEN GAMING PLATFORM
           </span>
 
           <h1>
@@ -68,31 +68,7 @@ function Hero() {
 
         <div className="hero-right">
 
-          <div className="hero-card">
-
-            <div className="card-header">
-
-              <span className="live-dot"></span>
-
-              <p>LIVE MATCH</p>
-
-            </div>
-
-            <div className="game-icon">
-              🎮
-            </div>
-
-            <h3>BGMI Championship</h3>
-
-            <p>
-              Squad Battle • Erangel
-            </p>
-
-            <button className="join-btn">
-              Join Tournament →
-            </button>
-
-          </div>
+          <HolographicController />
 
         </div>
 

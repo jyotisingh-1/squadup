@@ -5,6 +5,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Friends from "./pages/Friends";
+import Tournaments from "./pages/Tournaments";
+import Settings from "./pages/Settings";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -27,6 +30,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/friends" element={<Friends />} />
+
+        <Route path="/tournaments" element={<Tournaments />} />
+
+        <Route path="/settings" element={<Settings />} />
 
       </Routes>
     </BrowserRouter>
