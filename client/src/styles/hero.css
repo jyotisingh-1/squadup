@@ -56,14 +56,27 @@
 }
 
 .hero-left h1{
-    font-size:72px;
-    line-height:1.1;
-    font-family:"Orbitron",sans-serif;
-    margin-bottom:25px;
+     font-family: "Orbitron", sans-serif;
+    font-size: 72px;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.08),
+        0 0 25px rgba(0, 245, 255, 0.08);
+
+    position: relative;
 }
 
 .hero-left h1 span{
-    color:#00e5ff;
+    color: #00f5ff;
+
+    text-shadow:
+        0 0 8px rgba(0, 245, 255, 0.6),
+        0 0 20px rgba(0, 245, 255, 0.35),
+        0 0 45px rgba(0, 245, 255, 0.18);
 }
 
 .hero-left p{
@@ -80,85 +93,149 @@
     margin-bottom:50px;
 }
 
-.primary-btn{
-    padding:16px 36px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#00e5ff,#7b2cff);
-    color:white;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.35s;
+.primary-btn,
+.secondary-btn {
+    position: relative;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-.primary-btn:hover{
-    transform:translateY(-4px);
+/* Primary */
+
+.primary-btn {
+    color: #050816;
+    background: linear-gradient(135deg, #00f5ff, #6d5dfc);
+    border: 1px solid rgba(0, 245, 255, 0.5);
+
+    box-shadow:
+        0 0 15px rgba(0, 245, 255, 0.25),
+        0 0 35px rgba(0, 245, 255, 0.08);
 }
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 20px rgba(0, 245, 255, 0.45),
+        0 0 45px rgba(139, 92, 246, 0.25);
+}
+
+/* Secondary */
 
 .secondary-btn {
-  height: 60px;
-  padding: 0 34px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(0, 245, 255, 0.25);
 
-  border-radius: 35px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
 
-  background: rgba(255, 255, 255, 0.04);
-
-  color: #ffffff;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: all 0.35s ease;
-
-  backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 0 15px rgba(0, 245, 255, 0.025),
+        0 0 15px rgba(0, 245, 255, 0.04);
 }
 
 .secondary-btn:hover {
-  background: linear-gradient(135deg, #00e5ff, #7c3aed);
+    transform: translateY(-3px);
+    color: #00f5ff;
+    border-color: rgba(0, 245, 255, 0.65);
 
-  border-color: transparent;
+    box-shadow:
+        0 0 20px rgba(0, 245, 255, 0.18),
+        inset 0 0 20px rgba(0, 245, 255, 0.04);
+}
+/* ============================= */
+/* PREMIUM HERO STATS */
+/* ============================= */
 
-  transform: translateY(-4px);
-
-  box-shadow:
-    0 0 20px rgba(0, 229, 255, 0.25),
-    0 0 35px rgba(124, 58, 237, 0.2);
+.hero-stats {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
 }
 
-.hero-stats{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
+.stat-card {
+    position: relative;
+    width: 165px;
+    padding: 22px 24px;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07),
+        rgba(255, 255, 255, 0.025)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(14px);
+
+    overflow: hidden;
+    cursor: default;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.stat-card{
-    width:160px;
-    padding:24px;
-    border-radius:20px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(15px);
-    transition:.35s;
+.stat-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00f5ff,
+        #8b5cf6,
+        transparent
+    );
+
+    opacity: 0.7;
 }
 
-.stat-card:hover{
-    transform:translateY(-8px);
+.stat-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(0, 245, 255, 0.35);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        0 0 25px rgba(0, 245, 255, 0.10);
 }
 
-.stat-card h2{
-    font-size:32px;
-    color:#00e5ff;
-    margin-bottom:8px;
-    font-family:"Orbitron",sans-serif;
+.stat-card h2 {
+    position: relative;
+    z-index: 1;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    color: #00f5ff;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 0 12px rgba(0, 245, 255, 0.35);
 }
 
-.stat-card span{
-    color:#b8c6dc;
-    font-size:14px;
+.stat-card span {
+    position: relative;
+    z-index: 1;
+
+    color: #aebbd1;
+    font-size: 14px;
+    font-weight: 500;
 }
 /* ==========================
    RIGHT SIDE
@@ -403,63 +480,76 @@
 }
 
 }
-/* ==========================
-POPULAR GAMES
-========================== */
+/* ============================= */
+/* PREMIUM POPULAR GAMES */
+/* ============================= */
 
-.games-section{
-   .games-section{
+.games-section {
     position: relative;
-    padding:120px 8%;
-    background: linear-gradient(
-        180deg,
-        #101a36 0%,
-        #0b1022 25%,
-        #070b17 60%,
-        #050816 100%
-    );
-}
-}
-.games-section::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:700px;
-    height:400px;
-    background:#6c4dff;
-    opacity:.12;
-    filter:blur(180px);
-    pointer-events:none;
+    padding: 100px 8%;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0, 245, 255, 0.07),
+            transparent 35%
+        );
+    overflow: hidden;
 }
 
-.games-title{
-    color:white;
-    text-align:center;
-    font-size:56px;
-    margin-bottom:70px;
-    font-family:"Orbitron",sans-serif;
+.games-title {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto 55px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    text-align: center;
+
     text-shadow:
-        0 0 20px rgba(0,229,255,.25),
-        0 0 50px rgba(124,58,237,.25);
+        0 0 15px rgba(0, 245, 255, 0.15);
 }
 
-.games-grid{
-    position:relative;
-    z-index:2;
-    width:100%;
-    max-width:1400px;
-    margin:0 auto;
+.games-title::after {
+    content: "";
 
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
 
-    gap:40px;
-    justify-items:center;
-    align-items:start;
+    width: 70px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #00f5ff,
+        #8b5cf6
+    );
+
+    box-shadow:
+        0 0 12px rgba(0, 245, 255, 0.45);
 }
 
+.games-grid {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 28px;
+
+    max-width: 1400px;
+    margin: 0 auto;
+}
 @media(max-width:768px){
 
 .games-title{
@@ -476,44 +566,188 @@ POPULAR GAMES
     background:#050816;
 }
 
-.features-title{
-    text-align:center;
-    color:white;
-    font-size:48px;
-    margin-bottom:60px;
-    font-family:"Orbitron",sans-serif;
+/* ============================= */
+/* PREMIUM FEATURES SECTION */
+/* ============================= */
+
+.features-section {
+    position: relative;
+    padding: 110px 8%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(139, 92, 246, 0.07),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(0, 245, 255, 0.06),
+            transparent 30%
+        );
 }
 
-.features-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
+.features-title {
+    position: relative;
+    width: fit-content;
+
+    margin: 0 auto 60px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+    text-align: center;
+
+    text-shadow:
+        0 0 18px rgba(0, 245, 255, 0.15);
 }
 
-.feature-box{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-    padding:35px;
-    transition:.35s;
-    backdrop-filter:blur(15px);
+.features-title::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+
+    width: 70px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #00f5ff,
+        #8b5cf6
+    );
+
+    box-shadow:
+        0 0 14px rgba(0, 245, 255, 0.45);
 }
 
-.feature-box:hover{
-    transform:translateY(-10px);
-    border-color:#00E5FF;
-    box-shadow:0 0 35px rgba(0,229,255,.2);
+.features-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 24px;
 }
 
-.feature-box h3{
-    color:white;
-    margin-bottom:15px;
-    font-size:24px;
+.feature-box {
+    position: relative;
+
+    padding: 32px 26px;
+
+    min-height: 190px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(14px);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.feature-box p{
-    color:#b8c6dc;
-    line-height:1.7;
+.feature-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00f5ff,
+        #8b5cf6,
+        transparent
+    );
+
+    opacity: 0.65;
+}
+
+.feature-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -60px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 245, 255, 0.07);
+
+    filter: blur(25px);
+
+    transition: transform 0.4s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(0, 245, 255, 0.30);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 245, 255, 0.08);
+}
+
+.feature-box:hover::after {
+    transform: scale(1.8);
+}
+
+.feature-box h3 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 14px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.feature-box p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #9eabc0;
+
+    font-size: 14px;
+    line-height: 1.7;
 }
 /* =================================
    HOLOGRAPHIC CONTROLLER
@@ -741,4 +975,62 @@ POPULAR GAMES
             rgba(0, 245, 255, 0.06),
             transparent 25%
         );
+}
+/* ============================= */
+/* MOVING NEON LIGHT */
+/* ============================= */
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -30%;
+    width: 55%;
+    height: 140%;
+
+    background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(0, 245, 255, 0.02) 40%,
+        rgba(0, 245, 255, 0.10) 50%,
+        rgba(139, 92, 246, 0.04) 58%,
+        transparent 75%
+    );
+
+    transform: rotate(12deg);
+    filter: blur(18px);
+
+    animation: neonLightSweep 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes neonLightSweep {
+    0% {
+        transform: translateX(-30%) rotate(12deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(220%) rotate(12deg);
+        opacity: 0;
+    }
 }
