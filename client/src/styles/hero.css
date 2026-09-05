@@ -349,6 +349,10 @@
 
 .hero-right{
     margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
 }
 
 }
@@ -525,6 +529,7 @@ POPULAR GAMES
     justify-content: center;
 
     transform-style: preserve-3d;
+    transform: translateX(20px);
 }
 
 /* rotating rings */
@@ -600,7 +605,7 @@ POPULAR GAMES
 }
 
 .controller-svg {
-    width: 390px;
+    width: 420px;
     height: auto;
 
     filter:
@@ -680,4 +685,60 @@ POPULAR GAMES
     .controller-svg {
         width: 270px;
     }
+}
+/* ============================= */
+/* FUTURISTIC NEON GRID */
+/* ============================= */
+
+.hero {
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.055) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 18%,
+        black 82%,
+        transparent 100%
+    );
+
+    opacity: 0.65;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(0, 245, 255, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(139, 92, 246, 0.12),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(0, 245, 255, 0.06),
+            transparent 25%
+        );
 }

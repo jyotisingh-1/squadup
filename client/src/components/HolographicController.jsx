@@ -14,8 +14,8 @@ function HolographicController() {
     const cy = rect.top + rect.height / 2;
 
     setMousePos({
-      x: ((e.clientX - cx) / (rect.width / 2)) * 15,
-      y: ((e.clientY - cy) / (rect.height / 2)) * -15,
+      x: ((e.clientX - cx) / (rect.width / 2)) * 10,
+      y: ((e.clientY - cy) / (rect.height / 2)) * -10,
     });
   }, []);
 
