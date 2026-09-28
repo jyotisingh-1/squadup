@@ -1,6 +1,9 @@
 import FriendRequest from "../models/FriendRequest.js";
 import User from "../models/User.js";
 
+const pairKeyFor = (firstId, secondId) =>
+  [firstId.toString(), secondId.toString()].sort().join(":");
+
 // Helper to get authenticated User document
 async function getAuthUser(firebaseUid) {
   return await User.findOne({ firebaseUid });
@@ -21,7 +24,7 @@ export async function sendFriendRequest(req, res) {
     }
 
     // 1. Prevent sending request to self
-    if (user._id.toString() === recipientId) {
+    if (user._id.toString() === recipientId.toString()) {
       return res
         .status(400)
         .json({ message: "You cannot send a friend request to yourself." });
@@ -65,6 +68,7 @@ export async function sendFriendRequest(req, res) {
         existing.status = "pending";
         existing.requester = user._id;
         existing.recipient = recipientId;
+        existing.pairKey = pairKeyFor(user._id, recipientId);
         await existing.save();
 
         return res.status(200).json({
@@ -78,6 +82,7 @@ export async function sendFriendRequest(req, res) {
       requester: user._id,
       recipient: recipientId,
       status: "pending",
+      pairKey: pairKeyFor(user._id, recipientId),
     });
 
     return res.status(201).json({
@@ -86,6 +91,9 @@ export async function sendFriendRequest(req, res) {
     });
   } catch (error) {
     console.error("Failed to send friend request:", error);
+    if (error.code === 11000) {
+      return res.status(409).json({ message: "A friend request or friendship already exists." });
+    }
     return res.status(500).json({ message: "Failed to send friend request." });
   }
 }
@@ -148,25 +156,31 @@ export async function acceptFriendRequest(req, res) {
       return res.status(404).json({ message: "User not found." });
     }
 
-    const request = await FriendRequest.findById(id);
+    const pendingRequest = await FriendRequest.findOne({
+      _id: id,
+      recipient: user._id,
+      status: "pending",
+    }).select("requester");
+    const request = pendingRequest
+      ? await FriendRequest.findOneAndUpdate(
+          { _id: id, recipient: user._id, status: "pending" },
+          {
+            $set: {
+              status: "accepted",
+              pairKey: pairKeyFor(user._id, pendingRequest.requester),
+            },
+          },
+          { new: true }
+        )
+      : null;
     if (!request) {
-      return res.status(404).json({ message: "Friend request not found." });
+      const existing = await FriendRequest.findById(id);
+      if (!existing) return res.status(404).json({ message: "Friend request not found." });
+      if (existing.recipient.toString() !== user._id.toString()) {
+        return res.status(403).json({ message: "You are not authorized to accept this request." });
+      }
+      return res.status(400).json({ message: `Request is already ${existing.status}.` });
     }
-
-    if (request.recipient.toString() !== user._id.toString()) {
-      return res
-        .status(403)
-        .json({ message: "You are not authorized to accept this request." });
-    }
-
-    if (request.status !== "pending") {
-      return res
-        .status(400)
-        .json({ message: `Request is already ${request.status}.` });
-    }
-
-    request.status = "accepted";
-    await request.save();
 
     return res.status(200).json({
       message: "Friend request accepted! 🎉",
@@ -174,6 +188,9 @@ export async function acceptFriendRequest(req, res) {
     });
   } catch (error) {
     console.error("Failed to accept friend request:", error);
+    if (error.code === 11000) {
+      return res.status(409).json({ message: "A friendship already exists for this gamer pair." });
+    }
     return res.status(500).json({ message: "Failed to accept friend request." });
   }
 }
@@ -188,19 +205,19 @@ export async function rejectFriendRequest(req, res) {
       return res.status(404).json({ message: "User not found." });
     }
 
-    const request = await FriendRequest.findById(id);
+    const request = await FriendRequest.findOneAndUpdate(
+      { _id: id, recipient: user._id, status: "pending" },
+      { $set: { status: "rejected" } },
+      { new: true }
+    );
     if (!request) {
-      return res.status(404).json({ message: "Friend request not found." });
+      const existing = await FriendRequest.findById(id);
+      if (!existing) return res.status(404).json({ message: "Friend request not found." });
+      if (existing.recipient.toString() !== user._id.toString()) {
+        return res.status(403).json({ message: "You are not authorized to reject this request." });
+      }
+      return res.status(400).json({ message: `Request is already ${existing.status}.` });
     }
-
-    if (request.recipient.toString() !== user._id.toString()) {
-      return res
-        .status(403)
-        .json({ message: "You are not authorized to reject this request." });
-    }
-
-    request.status = "rejected";
-    await request.save();
 
     return res.status(200).json({
       message: "Friend request rejected.",
@@ -233,7 +250,18 @@ export async function cancelFriendRequest(req, res) {
         .json({ message: "You can only cancel your own sent requests." });
     }
 
-    await request.deleteOne();
+    if (request.status !== "pending") {
+      return res.status(400).json({ message: "Only pending requests can be cancelled." });
+    }
+
+    const cancelled = await FriendRequest.findOneAndDelete({
+      _id: id,
+      requester: user._id,
+      status: "pending",
+    });
+    if (!cancelled) {
+      return res.status(400).json({ message: "Only pending requests can be cancelled." });
+    }
 
     return res.status(200).json({
       message: "Friend request cancelled.",
@@ -292,6 +320,10 @@ export async function removeFriend(req, res) {
       return res.status(404).json({ message: "Friendship not found." });
     }
 
+    if (friendship.status !== "accepted") {
+      return res.status(400).json({ message: "Only accepted friendships can be removed here." });
+    }
+
     const isMember =
       friendship.requester.toString() === user._id.toString() ||
       friendship.recipient.toString() === user._id.toString();
@@ -320,9 +352,14 @@ export async function getDiscoverGamers(req, res) {
     }
 
     // 1. Get other users
-    const otherUsers = await User.find({ _id: { $ne: user._id } })
+    const search = String(req.query.q || "").trim();
+    const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const searchFilter = escapedSearch
+      ? { $or: [{ fullName: { $regex: escapedSearch, $options: "i" } }, { username: { $regex: escapedSearch, $options: "i" } }] }
+      : {};
+    const otherUsers = await User.find({ _id: { $ne: user._id }, ...searchFilter })
       .select("fullName username email bio createdAt")
-      .limit(30)
+      .limit(50)
       .sort({ createdAt: -1 });
 
     // 2. Get all friendships involving current user
@@ -332,11 +369,13 @@ export async function getDiscoverGamers(req, res) {
 
     // 3. Map status to each gamer
     const gamers = otherUsers.map((gamer) => {
-      const match = userRequests.find(
+      const matches = userRequests.filter(
         (r) =>
-          r.requester.toString() === gamer._id.toString() ||
-          r.recipient.toString() === gamer._id.toString()
+          r.status !== "rejected" &&
+          (r.requester.toString() === gamer._id.toString() ||
+            r.recipient.toString() === gamer._id.toString())
       );
+      const match = matches.find((r) => r.status === "accepted") || matches.find((r) => r.status === "pending");
 
       let relationship = "none";
       let requestId = null;

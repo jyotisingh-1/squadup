@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/sidebar.css";
 import { signOut } from "firebase/auth";
@@ -15,6 +14,7 @@ function Sidebar() {
     { name: "Profile", path: "/profile", icon: "👤" },
     { name: "Tournaments", path: "/tournaments", icon: "🏆" },
     { name: "Friends", path: "/friends", icon: "👥" },
+    { name: "Chat", path: "/chat", icon: "💬" },
     { name: "Settings", path: "/settings", icon: "⚙️" },
   ];
   const navigate = useNavigate();

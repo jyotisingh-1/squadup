@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase/firebase";
 import "../styles/friendsPage.css";
@@ -29,7 +29,7 @@ function Friends() {
   }, []);
 
   // Fetch all friend-related data
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!currentUser) return;
 
     try {
@@ -70,13 +70,36 @@ function Friends() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentUser]);
 
   useEffect(() => {
-    if (currentUser) {
-      fetchData();
-    }
-  }, [currentUser]);
+    if (!currentUser) return undefined;
+    const timer = window.setTimeout(fetchData, 0);
+    return () => window.clearTimeout(timer);
+  }, [currentUser, fetchData]);
+
+  // Search the full gamer directory as the user types, not only the initial page.
+  useEffect(() => {
+    if (!currentUser || activeTab !== "discover") return;
+    const timer = setTimeout(async () => {
+      try {
+        const token = await currentUser.getIdToken();
+        const params = new URLSearchParams();
+        if (searchQuery.trim()) params.set("q", searchQuery.trim());
+        const res = await fetch(
+          `http://localhost:5000/api/friends/discover?${params.toString()}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        if (!res.ok) throw new Error("Failed to search gamers.");
+        const data = await res.json();
+        setDiscoverGamers(data.gamers || []);
+      } catch (err) {
+        console.error("Failed to search gamers:", err);
+        setFeedback({ type: "error", message: err.message });
+      }
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [currentUser, activeTab, searchQuery]);
 
   // Send Friend Request
   const handleSendRequest = async (recipientId) => {
@@ -230,7 +253,8 @@ function Friends() {
     const q = searchQuery.toLowerCase();
     return (
       (g.fullName && g.fullName.toLowerCase().includes(q)) ||
-      (g.username && g.username.toLowerCase().includes(q))
+      (g.username && g.username.toLowerCase().includes(q)) ||
+      (g.email && g.email.toLowerCase().includes(q))
     );
   });
 
@@ -377,6 +401,9 @@ function Friends() {
                             Friends since {new Date(since).toLocaleDateString()}
                           </span>
 
+                          <Link to={`/chat?friendId=${friend._id}`} className="btn-chat-link">
+                            Chat
+                          </Link>
                           <button
                             type="button"
                             className="btn-unfriend"

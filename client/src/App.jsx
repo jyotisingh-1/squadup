@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Friends from "./pages/Friends";
+import Chat from "./pages/Chat";
 import Tournaments from "./pages/Tournaments";
 import Settings from "./pages/Settings";
 import Games from "./pages/Games";
@@ -33,6 +34,14 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
         <Route path="/friends" element={<Friends />} />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="/tournaments" element={<Tournaments />} />
 

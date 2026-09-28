@@ -14,6 +14,8 @@ const friendRequestSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    // Canonicalized user pair used to prevent reverse-direction duplicates.
+    pairKey: { type: String },
     status: {
       type: String,
       enum: ["pending", "accepted", "rejected"],
@@ -26,6 +28,7 @@ const friendRequestSchema = new mongoose.Schema(
 
 // Compound index to quickly query pairwise friendships
 friendRequestSchema.index({ requester: 1, recipient: 1 });
+friendRequestSchema.index({ pairKey: 1 }, { unique: true, sparse: true });
 
 const FriendRequest = mongoose.model("FriendRequest", friendRequestSchema);
 
