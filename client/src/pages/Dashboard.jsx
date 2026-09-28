@@ -13,16 +13,7 @@ function Dashboard() {
     <div style={{ display: "flex" }}>
       <Sidebar />
 
-      <main
-        style={{
-          marginLeft: "260px",
-          width: "100%",
-          minHeight: "100vh",
-          background: "#050816",
-          color: "white",
-          padding: "35px 40px",
-        }}
-      >
+      <main className="dashboard-main">
         <Topbar />
         <div className="stats-grid">
 
@@ -62,6 +53,7 @@ function Dashboard() {
     <ContinuePlaying />
 
     <RecentActivity />
+    <UpcomingMatch />
 
   </div>
 
@@ -80,7 +72,7 @@ function Dashboard() {
   <div className="right-section">
 
 
-    <UpcomingMatch />
+   
 
   </div>
 

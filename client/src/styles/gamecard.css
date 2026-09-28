@@ -226,3 +226,79 @@
 .play-btn:hover svg {
     color: #07101c;
 }
+
+/* ============================= */
+/* SELECTION STATES */
+/* ============================= */
+
+.game-card.selectable {
+    cursor: pointer;
+}
+
+.game-card.selected {
+    border-color: rgba(0, 245, 255, 0.7);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.45),
+        0 0 12px rgba(0, 245, 255, 0.15);
+}
+
+.game-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.selected-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #00f5ff;
+    background: rgba(0, 245, 255, 0.14);
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.selected-badge svg {
+    font-size: 9px;
+}
+
+.play-btn.select-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    gap: 6px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.play-btn.select-btn svg {
+    font-size: 9px;
+}
+
+.play-btn.select-btn.selected {
+    background: rgba(0, 245, 255, 0.15);
+    color: #00f5ff;
+    border-color: rgba(0, 245, 255, 0.5);
+    box-shadow: none;
+}
+
+.play-btn.select-btn.selected:hover {
+    background: rgba(0, 245, 255, 0.25);
+    border-color: #00f5ff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+}
+
+.play-btn.select-btn.selected svg {
+    color: #00f5ff;
+}
+
+.play-btn.select-btn.selected:hover svg {
+    color: #ffffff;
+}
+

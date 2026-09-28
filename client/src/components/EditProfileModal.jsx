@@ -2,8 +2,7 @@ import { X } from "lucide-react";
 import "../styles/editProfileModal.css";
 import useUser from "../hooks/useUser";
 import { useEffect, useState } from "react";
-import { auth, db } from "../firebase/firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { auth } from "../firebase/firebase";
 
 function EditProfileModal({ isOpen, onClose }) {
 
@@ -22,33 +21,50 @@ function EditProfileModal({ isOpen, onClose }) {
   }, [userData]);
 
   const handleSave = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const user = auth.currentUser;
+  try {
+    const user = auth.currentUser;
 
-      if (!user) {
-        alert("User not found.");
-        return;
-      }
-
-      await updateDoc(doc(db, "users", user.uid), {
-        fullName: fullName.trim(),
-        username: username.trim(),
-        bio: bio.trim(),
-      });
-
-      alert("Profile updated successfully! 🎉");
-
-      onClose();
-
-      window.location.reload();
-
-    } catch (error) {
-      console.error(error);
-      alert("Failed to update profile.");
+    if (!user) {
+      alert("User not found.");
+      return;
     }
-  };
+
+    const token = await user.getIdToken();
+
+    const response = await fetch(
+      "http://localhost:5000/api/users/me",
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: fullName.trim(),
+          username: username.trim(),
+          bio: bio.trim(),
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to update profile.");
+    }
+
+    alert("Profile updated successfully! 🎉");
+
+    onClose();
+    window.location.reload();
+
+  } catch (error) {
+    console.error("Profile update error:", error);
+    alert(error.message || "Failed to update profile.");
+  }
+};
 
   if (!isOpen) return null;
 

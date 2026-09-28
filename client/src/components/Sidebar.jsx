@@ -10,6 +10,8 @@ function Sidebar() {
   
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: "🏠" },
+    { name: "Games", path: "/games", icon: "🎮" },
+    { name: "Squads", path: "/squads", icon: "⚡" },
     { name: "Profile", path: "/profile", icon: "👤" },
     { name: "Tournaments", path: "/tournaments", icon: "🏆" },
     { name: "Friends", path: "/friends", icon: "👥" },

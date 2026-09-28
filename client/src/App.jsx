@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import Friends from "./pages/Friends";
 import Tournaments from "./pages/Tournaments";
 import Settings from "./pages/Settings";
+import Games from "./pages/Games";
+import Squads from "./pages/Squads";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -33,6 +35,10 @@ function App() {
         <Route path="/friends" element={<Friends />} />
 
         <Route path="/tournaments" element={<Tournaments />} />
+
+        <Route path="/games" element={<Games />} />
+
+        <Route path="/squads" element={<Squads />} />
 
         <Route path="/settings" element={<Settings />} />
 

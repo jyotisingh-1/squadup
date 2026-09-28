@@ -35,7 +35,7 @@ function Navbar() {
           </li>
 
           <li>
-            <a href="/">Games</a>
+            <Link to="/games">Games</Link>
           </li>
 
           <li>

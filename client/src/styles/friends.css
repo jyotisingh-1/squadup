@@ -1,0 +1,331 @@
+/* =========================================
+   FRIENDS & SQUAD ADDITION
+========================================= */
+
+.friends-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.friends-kicker {
+    display: block;
+    color: #00e5ff !important;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.friends-header h2 {
+    margin: 0 !important;
+}
+
+.friends-view-btn {
+    border: none;
+    background: transparent;
+    color: #7f8ba3;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.friends-view-btn:hover {
+    color: #00e5ff;
+}
+
+.friends-view-btn svg {
+    font-size: 8px;
+}
+
+
+/* -----------------------------------------
+   FRIEND LIST
+----------------------------------------- */
+
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.friends-list .friend {
+    margin-bottom: 0;
+}
+
+
+/* -----------------------------------------
+   YOUR SQUAD
+----------------------------------------- */
+
+.your-squad {
+    margin-top: 18px;
+    padding-top: 16px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.squad-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.squad-title span {
+    color: #cbd5e1;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.squad-title small {
+    color: #64748b;
+    font-size: 8px;
+}
+
+.squad-members {
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+}
+
+.squad-member {
+    position: relative;
+    margin-left: -7px;
+}
+
+.squad-member:first-child {
+    margin-left: 0;
+}
+
+.squad-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+
+    background: linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+    border: 2px solid #101827;
+
+    box-shadow:
+        0 0 12px rgba(0,229,255,.12);
+}
+
+.current-user .squad-avatar {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+}
+
+.squad-online {
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    right: 0;
+    bottom: 1px;
+
+    background: #22c55e;
+
+    border: 2px solid #101827;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 7px #22c55e;
+}
+
+
+/* -----------------------------------------
+   FIND SQUAD
+----------------------------------------- */
+
+.find-squad-btn {
+    width: 100%;
+    height: 42px;
+
+    margin-top: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    border-radius: 11px;
+
+    border: 1px solid rgba(0,229,255,.18);
+
+    color: #dffbff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,.07),
+            rgba(139,92,246,.10)
+        );
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.find-squad-btn:hover {
+    border-color: rgba(0,229,255,.4);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,.13),
+            rgba(139,92,246,.16)
+        );
+
+    box-shadow:
+        0 0 20px rgba(0,229,255,.08);
+
+    transform: translateY(-2px);
+}
+
+.find-squad-btn > svg:first-child {
+    color: #00e5ff;
+    font-size: 9px;
+}
+
+.find-squad-btn .find-arrow {
+    margin-left: auto;
+    margin-right: 10px;
+    color: #64748b;
+    font-size: 8px;
+}
+/* =========================================
+   FRIENDS & SQUAD - LARGER / MORE VISIBLE
+========================================= */
+
+.friends-card {
+    padding: 28px !important;
+}
+
+/* Header */
+.friends-header {
+    margin-bottom: 22px;
+}
+
+.friends-header h2 {
+    font-size: 26px !important;
+}
+
+/* Friend rows */
+.friends-list {
+    gap: 11px;
+}
+
+.friends-list .friend {
+    padding: 17px 14px !important;
+    margin-bottom: 0 !important;
+    min-height: 68px;
+    border-radius: 17px;
+    gap: 16px;
+}
+
+.friends-list .friend h4 {
+    font-size: 17px !important;
+}
+
+.friends-list .friend p {
+    font-size: 13px !important;
+    margin-top: 5px;
+}
+
+.friends-list .avatar {
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 20px !important;
+}
+
+.friends-list .online-dot {
+    width: 13px;
+    height: 13px;
+}
+
+/* =========================================
+   YOUR SQUAD
+========================================= */
+
+.your-squad {
+    margin-top: 24px !important;
+    padding-top: 20px !important;
+}
+
+.squad-title {
+    margin-bottom: 15px;
+}
+
+.squad-title span {
+    font-size: 12px;
+}
+
+.squad-title small {
+    font-size: 9px;
+}
+
+/* Bigger squad avatars */
+.squad-members {
+    padding-left: 6px;
+}
+
+.squad-member {
+    margin-left: -10px;
+}
+
+.squad-avatar {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 13px !important;
+}
+
+/* online dots */
+.squad-online {
+    width: 9px;
+    height: 9px;
+}
+
+/* =========================================
+   FIND MORE BUTTON
+========================================= */
+
+.find-squad-btn {
+    height: 48px !important;
+    margin-top: 20px !important;
+    border-radius: 12px;
+    font-size: 12px !important;
+}
+
+.find-squad-btn > svg:first-child {
+    font-size: 10px;
+}
+
+.find-squad-btn .find-arrow {
+    font-size: 9px;
+}
